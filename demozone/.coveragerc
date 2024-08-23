@@ -1,0 +1,6 @@
+[run]
+source = demozone
+omit = 
+    tests/*
+    autoapp.py
+

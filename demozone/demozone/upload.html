@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Flask-Dropzone Example</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dropzone/dropzone.css') }}">
+</head>
+<body>
+    <form action="{{ url_for('upload') }}" class="dropzone" id="my-dropzone"></form>
+    <script src="{{ url_for('static', filename='dropzone/dropzone.js') }}"></script>
+    <script>
+        Dropzone.options.myDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 3, // MB
+            acceptedFiles: "image/*"
+        };
+    </script>
+</body>
+</html>
