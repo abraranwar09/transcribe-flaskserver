@@ -7,7 +7,7 @@ import torch
 from datetime import datetime
 from azure.storage.blob import BlobClient, ContentSettings
 import base64
-from .sendtoapi import send_to_api, send_image_url_to_api  # Import the functions from sendtoapi.py
+from .sendtoapi import send_to_api  # Removed send_image_url_to_api
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -134,7 +134,7 @@ def process_image_file(filepath, session_id, callback=None):
         if image_url:
             save_urls_to_file("processed_images", [image_url])
             image_urls_file = os.path.join("processed_images", "image_urls.txt")
-            send_image_url_to_api(image_url, "1723700417755x586654339331260400")
+            send_to_api(image_urls_file, "1723700417755x586654339331260400")
             
             if callback:
                 callback(session_id, image_url)

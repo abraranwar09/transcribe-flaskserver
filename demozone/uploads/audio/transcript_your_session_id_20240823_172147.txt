@@ -1,0 +1,18 @@
+ I think I recently re-broke it.
+And then what I could actually do is I could handle upload using multer, right?
+And then it opens up, like, do we want to keep it here?
+Do we want to keep it on a storage bucket?
+It's fine.
+And then we have the file, and we run that with Whisper using the CLI.
+And then what?
+Whisper tells us that it's got
+ just check that directory for transcriptions and throw that at my APM.
+And then, lo and behold.
+Why can't I run Flask anymore?
+Oh, because I'm not in the virtual environment.
+ Awww.
+ It's trying to transcribe pictures right now.
+Okay, they're uploading.
+Wow.
+Is that running?
+Okay.

@@ -21,10 +21,14 @@ def send_to_api(transcript_path, bot_id, image_urls_file):
     
     transcript_base64 = file_to_base64(transcript_path) if transcript_path else ""
     image_urls = get_image_urls(image_urls_file)
+    filename = os.path.basename(transcript_path) if transcript_path else ""
     
     data = {
         'bot_id': bot_id,  # Ensure the key is 'bot_id'
-        'transcription_file': transcript_base64,
+        'transcription_file': {
+            "filename": filename,
+            "base64": transcript_base64
+        },
         'image_urls': image_urls
     }
     
@@ -34,24 +38,6 @@ def send_to_api(transcript_path, bot_id, image_urls_file):
         logging.info("Data sent to API successfully")
     except requests.exceptions.RequestException as e:
         logging.error(f"Error sending data to API: {e}")
-        if hasattr(e, 'response'):
-            logging.error(f"Response content: {e.response.text}")
-
-def send_image_url_to_api(image_url, bot_id):
-    url = "https://api.ohanapay.app/api/1.1/wf/add_from_transcriber"
-    
-    data = {
-        'bot_id': bot_id,  # Ensure the key is 'bot_id'
-        'transcription_file': "",
-        'image_urls': [image_url]
-    }
-    
-    try:
-        response = requests.post(url, json=data)
-        response.raise_for_status()
-        logging.info("Image URL sent to API successfully")
-    except requests.exceptions.RequestException as e:
-        logging.error(f"Error sending image URL to API: {e}")
         if hasattr(e, 'response'):
             logging.error(f"Response content: {e.response.text}")
 
